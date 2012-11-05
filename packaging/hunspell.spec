@@ -98,8 +98,6 @@ rm -rf %{buildroot}%{_mandir}/hu
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libhunspell-*.so
-%{_libdir}/libhunspell-*.la
-%{_libdir}/libparsers.a
 %{_includedir}/%{name}
 %{_includedir}/munch.h
 %{_includedir}/unmunch.h
