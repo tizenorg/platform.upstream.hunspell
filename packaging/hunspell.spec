@@ -14,7 +14,6 @@ BuildRequires:  libtool
 BuildRequires:  ncurses-devel >= 5.0
 BuildRequires:  pkg-config
 BuildRequires:  readline-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Hunspell is a spell checker and morphological analyzer library and
@@ -64,6 +63,7 @@ make check
 %make_install
 rm -f %{buildroot}%{_bindir}/example
 install -m 644 src/tools/{,un}munch.h %{buildroot}%{_includedir}
+rm -rf %{buildroot}%{_mandir}/hu
 %find_lang %{name}
 
 
@@ -71,22 +71,15 @@ install -m 644 src/tools/{,un}munch.h %{buildroot}%{_includedir}
 
 %postun	-p /sbin/ldconfig -p /sbin/ldconfig
 
+
+%docs_package
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc README README.myspell AUTHORS AUTHORS.myspell COPYING THANKS license.hunspell license.myspell
+%doc COPYING license.hunspell license.myspell
 %attr(755,root,root) %{_bindir}/hunspell
 %attr(755,root,root) %{_libdir}/libhunspell*.so*
 %exclude %{_libdir}/libhunspell*.so
-%dir %{_mandir}/hu
-%dir %{_mandir}/hu/man1
-%dir %{_mandir}/hu/man4
-%{_mandir}/man1/hunspell.1*
-%{_mandir}/man4/hunspell.4*
-%{_mandir}/man1/hunzip.1*
-%{_mandir}/man1/hzip.1*
-%{_mandir}/man3/hunspell.3*
-%lang(hu) %{_mandir}/hu/man1/hunspell.1*
-%lang(hu) %{_mandir}/hu/man4/hunspell.4*
 
 %files tools
 %defattr(644,root,root,755)
@@ -110,7 +103,6 @@ install -m 644 src/tools/{,un}munch.h %{buildroot}%{_includedir}
 %{_includedir}/%{name}
 %{_includedir}/munch.h
 %{_includedir}/unmunch.h
-#%{_pkgconfigdir}/hunspell.pc
 %{_libdir}/pkgconfig/hunspell.pc
 
 %files static
