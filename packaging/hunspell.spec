@@ -6,6 +6,7 @@ Summary:        Hunspell - a spell checker and morphological analyzer library
 Url:            http://hunspell.sourceforge.net/
 Group:          System/Libraries
 Source:         %{name}-%{version}.tar.bz2
+Source1001: 	hunspell.manifest
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -50,6 +51,7 @@ Static hunspell library.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 %configure \
@@ -75,6 +77,7 @@ rm -rf %{buildroot}%{_mandir}/hu
 %docs_package
 
 %files -f %{name}.lang
+%manifest %{name}.manifest
 %defattr(644,root,root,755)
 %doc COPYING license.hunspell license.myspell
 %attr(755,root,root) %{_bindir}/hunspell
@@ -82,6 +85,7 @@ rm -rf %{buildroot}%{_mandir}/hu
 %exclude %{_libdir}/libhunspell*.so
 
 %files tools
+%manifest %{name}.manifest
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/analyze
 %attr(755,root,root) %{_bindir}/chmorph
@@ -96,6 +100,7 @@ rm -rf %{buildroot}%{_mandir}/hu
 %attr(755,root,root) %{_bindir}/wordlist2hunspell
 
 %files devel
+%manifest %{name}.manifest
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libhunspell-*.so
 %{_includedir}/%{name}
