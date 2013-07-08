@@ -1,0 +1,8 @@
+Change-Id: I4da2785cfefb5db2c38fc83b75f581289690bab2
+Code-Review+2: Ryan Ware <ware@linux.intel.com>
+Verified+1: Ryan Ware <ware@linux.intel.com>
+Submitted-by: Ryan Ware <ware@linux.intel.com>
+Submitted-at: Mon, 08 Jul 2013 09:41:05 -0700
+Reviewed-on: https://review.tizen.org/gerrit/4705
+Project: platform/upstream/hunspell
+Branch: refs/heads/tizen
